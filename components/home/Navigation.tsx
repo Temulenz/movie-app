@@ -1,6 +1,3 @@
-"use client";
-
-import * as React from "react";
 import Link from "next/link";
 
 import { Input } from "@/components/ui/input";
@@ -15,125 +12,23 @@ import {
 } from "@/components/ui/navigation-menu";
 import { ThemeToggler } from "./themeToggler";
 import { ChevronRight } from "lucide-react";
+import { getGenremovies } from "@/utilis/get-data";
+import { Key } from "react";
 
-const components: { title: string; href: string }[] = [
-  {
-    title: "Action",
-    href: "/docs/primitives/alert-dialog",
-  },
-  {
-    title: "Adventure",
-    href: "/docs/primitives/hover-card",
-  },
-  {
-    title: "Animation",
-    href: "/docs/primitives/progress",
-  },
-  {
-    title: "Biography",
-    href: "/docs/primitives/scroll-area",
-  },
-  {
-    title: "Comedy",
-    href: "/docs/primitives/tabs",
-  },
-  {
-    title: "Crime",
-    href: "/docs/primitives/tooltip",
-  },
-  {
-    title: "Documentary",
-    href: "/docs/primitives/alert-dialog",
-  },
-  {
-    title: "Drama",
-    href: "/docs/primitives/alert-dialog",
-  },
-  {
-    title: "Family",
-    href: "/docs/primitives/alert-dialog",
-  },
-  {
-    title: "Fantasy",
-    href: "/docs/primitives/alert-dialog",
-  },
-  {
-    title: "Film-Noir",
-    href: "/docs/primitives/alert-dialog",
-  },
-  {
-    title: "Game-Show",
-    href: "/docs/primitives/alert-dialog",
-  },
-  {
-    title: "History",
-    href: "/docs/primitives/alert-dialog",
-  },
-  {
-    title: "Horror",
-    href: "/docs/primitives/alert-dialog",
-  },
-  {
-    title: "Music",
-    href: "/docs/primitives/alert-dialog",
-  },
-  {
-    title: "Musical",
-    href: "/docs/primitives/alert-dialog",
-  },
-  {
-    title: "Mystery",
-    href: "/docs/primitives/alert-dialog",
-  },
-  {
-    title: "News",
-    href: "/docs/primitives/alert-dialog",
-  },
-  {
-    title: "Reality-TV",
-    href: "/docs/primitives/alert-dialog",
-  },
-  {
-    title: "Romance",
-    href: "/docs/primitives/alert-dialog",
-  },
-  {
-    title: "Sci-Fi",
-    href: "/docs/primitives/alert-dialog",
-  },
-  {
-    title: "Short",
-    href: "/docs/primitives/alert-dialog",
-  },
-  {
-    title: "Sport",
-    href: "/docs/primitives/alert-dialog",
-  },
-  {
-    title: "Talk-Show",
-    href: "/docs/primitives/alert-dialog",
-  },
-  {
-    title: "Thriller",
-    href: "/docs/primitives/alert-dialog",
-  },
-  {
-    title: "War",
-    href: "/docs/primitives/alert-dialog",
-  },
-  {
-    title: "Western",
-    href: "/docs/primitives/alert-dialog",
-  },
-];
+const components: { title: string; href: string }[] = [];
 
-export function NavigationMenuDemo() {
+export async function NavigationMenuDemo() {
+  const Genrelist = await getGenremovies();
+  console.log("fbnfdjbdfdmkbdfk", Genrelist);
   return (
     <div className="flex justify-between w-[1280px]">
-      <div className="flex items-center">
-        <img className="w-[16px] h-4" src="movieZ.svg" />
-        <p className="text-indigo-700 text-[16px]">MovieZ</p>
-      </div>
+      <Link href={`/`}>
+        {" "}
+        <div className="flex items-center">
+          <img className="w-[16px] h-4" src="movieZ.svg" />
+          <p className="text-indigo-700 text-[16px]">MovieZ</p>
+        </div>
+      </Link>
 
       <div className="flex">
         <NavigationMenu viewport={true}>
@@ -142,13 +37,18 @@ export function NavigationMenuDemo() {
               <NavigationMenuTrigger>Genre</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="flex flex-wrap w-[577px] p-4 ">
-                  {components.map((component) => (
-                    <ListItem
-                      key={component.title}
-                      title={component.title}
-                      href={component.href}
-                    ></ListItem>
-                  ))}
+                  {Genrelist.genres.map(
+                    (genre: {
+                      id: Key | null | undefined;
+                      name: string | undefined;
+                    }) => (
+                      <ListItem
+                        key={genre.id}
+                        title={genre.name}
+                        href={`/genre?id=${genre.id}?name=${genre.name}`}
+                      ></ListItem>
+                    )
+                  )}
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>

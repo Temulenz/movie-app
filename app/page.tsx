@@ -1,16 +1,24 @@
-import Movie from "@/components/home/API";
-import { Moviecard } from "@/components/home/movie-card";
-import { NavigationMenuDemo } from "@/components/home/Navigation";
-import { Popular } from "@/components/home/popular";
-import { Scroll } from "@/components/home/Scroll-card";
-import Upcoming from "./genre/page";
+import { MovieCarousel } from "@/components/main/MovieCarousel";
+import { MoviesContainer } from "@/components/home/mvoies-container";
+import { movieResponseType } from "@/components/main/Movietype";
+import { getMoviesList } from "@/utilis/get-data";
 
-export default function Home() {
+export default async function Home() {
+  const upcomingMovies: movieResponseType = await getMoviesList("upcoming");
+  const popularMovies: movieResponseType = await getMoviesList("popular");
+  const topRatedMovies: movieResponseType = await getMoviesList("top_rated");
+  const nowPlayingMovies: movieResponseType = await getMoviesList(
+    "now_playing"
+  );
+
   return (
     <div className="w-full flex flex-col items-center">
-      <Scroll></Scroll>
-
-      <Upcoming></Upcoming>
+      <div>
+        <MovieCarousel movies={nowPlayingMovies.results} />
+        <MoviesContainer movies={upcomingMovies.results} title="Upcoming" />
+        <MoviesContainer movies={popularMovies.results} title="Popular" />
+        <MoviesContainer movies={topRatedMovies.results} title="Top Rated" />
+      </div>
     </div>
   );
 }

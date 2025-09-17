@@ -27,15 +27,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="justify-center items-center flex flex-col ">
-        <div className="mb-6 mt-[5px]">
-          <NavigationMenuDemo></NavigationMenuDemo>
-        </div>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
+          <div className="mb-6 mt-[5px]">
+            <NavigationMenuDemo></NavigationMenuDemo>
+          </div>
           {children}
         </ThemeProvider>
         <Footer></Footer>
