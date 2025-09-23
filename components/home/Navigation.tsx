@@ -14,6 +14,7 @@ import { ThemeToggler } from "./themeToggler";
 import { ChevronRight } from "lucide-react";
 import { getGenremovies } from "@/utilis/get-data";
 import { Key } from "react";
+import { SearchSection } from "../main/SearchSection";
 
 const components: { title: string; href: string }[] = [];
 
@@ -25,7 +26,7 @@ export async function NavigationMenuDemo() {
       <Link href={`/`}>
         {" "}
         <div className="flex items-center">
-          <img className="w-[16px] h-4" src="movieZ.svg" />
+          <img className="w-[16px] h-4" src="/movieZ.svg" />
           <p className="text-indigo-700 text-[16px]">MovieZ</p>
         </div>
       </Link>
@@ -54,7 +55,7 @@ export async function NavigationMenuDemo() {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-        <Input placeholder="search"></Input>
+        <SearchSection></SearchSection>
       </div>
       <ThemeToggler></ThemeToggler>
     </div>

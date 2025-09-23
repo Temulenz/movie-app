@@ -10,10 +10,25 @@ export type MovieType = {
   title: string;
   vote_average: number;
   vote_count: string;
+  runtime: number;
+  genres: Genre[];
+  key: string;
+  type: string;
+};
+export type Genre = {
+  name: string;
 };
 
 export type movieResponseType = {
   page: number;
   totalPages: number;
   results: MovieType[];
+};
+export type Directorname = {
+  cast: Casttype[];
+  crew: Casttype[];
+};
+export type Casttype = {
+  job: string;
+  name: string;
 };
