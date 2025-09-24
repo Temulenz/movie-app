@@ -6,14 +6,9 @@ import SeeMore from "../main/SeeMore";
 type MoviesContainerProps = {
   movies: MovieType[];
   title: string;
-  link: string;
 };
 
-export const MoviesContainer = ({
-  movies,
-  title,
-  link,
-}: MoviesContainerProps) => {
+export const SeeMoreCard = ({ movies, title }: MoviesContainerProps) => {
   return (
     <div className="w-[1440px] m-auto px-20">
       <div
@@ -22,7 +17,6 @@ export const MoviesContainer = ({
       mt-[52px] mb-9"
       >
         <div className="text-[24px] font-bold ">{title}</div>
-        <SeeMore link={link}></SeeMore>
       </div>
 
       <div className="flex gap-8 flex-wrap">

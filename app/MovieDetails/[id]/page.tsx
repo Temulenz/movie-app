@@ -12,6 +12,10 @@ import {
 } from "@/utilis/get-data";
 import Image from "next/image";
 import { Youtubedialog } from "@/components/main/MovieTrailer";
+import SeeMore from "@/components/main/SeeMore";
+import { MoviesContainer } from "@/components/home/mvoies-container";
+import { SeeMoreCard } from "@/components/home/SeeMoreCard";
+import { title } from "process";
 
 type MovieDetailsProps = {
   params: Promise<{ id: string }>;
@@ -53,7 +57,6 @@ const MovieDetails = async ({ params }: MovieDetailsProps) => {
           <div>{moviedetails.vote_count}</div>
         </div>
       </div>
-
       <div className="flex justify-between mt-[24px]">
         <div className="flex justify-between w-[1080px]">
           <img
@@ -67,7 +70,6 @@ const MovieDetails = async ({ params }: MovieDetailsProps) => {
           ></Youtubedialog>
         </div>
       </div>
-
       <div>
         <div className="flex gap-4 mt-[32px] mb-[20px]   ">
           {moviedetails.genres.map((Genre: any) => (
@@ -118,8 +120,11 @@ const MovieDetails = async ({ params }: MovieDetailsProps) => {
           </div>
         </div>
       </div>
-
-      <div>More like this</div>
+      <div className="flex justify-between mt-[36px]  ">
+        <div className="text-[24px] font-bold">More like this</div>
+        <SeeMore link="see more"></SeeMore>
+      </div>
+      <SeeMoreCard movies={similarMovie.results} title={title} />;
     </div>
   );
 };

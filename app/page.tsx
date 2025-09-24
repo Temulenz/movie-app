@@ -2,6 +2,7 @@ import { MovieCarousel } from "@/components/main/MovieCarousel";
 import { MoviesContainer } from "@/components/home/mvoies-container";
 import { movieResponseType } from "@/components/main/Movietype";
 import { getMoviesList } from "@/utilis/get-data";
+import SeeMore from "@/components/main/SeeMore";
 
 export default async function Home() {
   const upcomingMovies: movieResponseType = await getMoviesList("upcoming");
@@ -15,9 +16,23 @@ export default async function Home() {
     <div className="w-full flex flex-col items-center">
       <div>
         <MovieCarousel movies={nowPlayingMovies.results} />
-        <MoviesContainer movies={upcomingMovies.results} title="Upcoming" />
-        <MoviesContainer movies={popularMovies.results} title="Popular" />
-        <MoviesContainer movies={topRatedMovies.results} title="Top Rated" />
+
+        <MoviesContainer
+          movies={upcomingMovies.results}
+          title="Upcoming"
+          link="upcoming"
+        />
+
+        <MoviesContainer
+          movies={popularMovies.results}
+          title="Popular"
+          link="popular"
+        />
+        <MoviesContainer
+          movies={topRatedMovies.results}
+          title="Top Rated"
+          link="top_rated"
+        />
       </div>
     </div>
   );

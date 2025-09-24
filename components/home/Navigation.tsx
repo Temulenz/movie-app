@@ -31,7 +31,7 @@ export async function NavigationMenuDemo() {
         </div>
       </Link>
 
-      <div className="flex">
+      <div className="flex ">
         <NavigationMenu viewport={true}>
           <NavigationMenuList>
             <NavigationMenuItem>

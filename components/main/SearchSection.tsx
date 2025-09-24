@@ -36,16 +36,21 @@ export const SearchSection = () => {
       ></input>
 
       <div>
-        <Popover open={isOpen}>
-          <PopoverTrigger className="hidden "></PopoverTrigger>
+        <Popover
+          open={isOpen}
+          onOpenChange={() => {
+            setIsOpen(false);
+          }}
+        >
+          <PopoverTrigger></PopoverTrigger>
           <PopoverContent
             onOpenAutoFocus={(e) => e.preventDefault()}
             onCloseAutoFocus={(e) => e.preventDefault()}
-            className="ml-[1200px] mt-[40] w-[577px]"
+            className="ml-[486px] mt-[13px] w-[577px]"
           >
             {foundMovies?.results.slice(0, 5).map((movie) => {
               return (
-                <div className="flex gap-2">
+                <div key={movie.id} className="flex gap-2">
                   <div>
                     <img
                       className="w-[67px] h-[100px] mr-[32px]"
