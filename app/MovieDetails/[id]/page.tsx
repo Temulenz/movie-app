@@ -16,6 +16,7 @@ import SeeMore from "@/components/main/SeeMore";
 import { MoviesContainer } from "@/components/home/mvoies-container";
 import { SeeMoreCard } from "@/components/home/SeeMoreCard";
 import { title } from "process";
+import { TrailerDialog } from "@/components/home/TrailerDialog";
 
 type MovieDetailsProps = {
   params: Promise<{ id: string }>;
@@ -64,10 +65,7 @@ const MovieDetails = async ({ params }: MovieDetailsProps) => {
             src={`https://image.tmdb.org/t/p/original/${moviedetails.poster_path}`}
           />
 
-          <Youtubedialog
-            image={moviedetails.backdrop_path}
-            Movietrailer={Trailer?.key}
-          ></Youtubedialog>
+          <TrailerDialog youtubeKey={moviedetails.trailerKey}></TrailerDialog>
         </div>
       </div>
       <div>

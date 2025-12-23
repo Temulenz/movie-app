@@ -72,7 +72,7 @@ function ListItem({
     <li {...props}>
       <NavigationMenuLink asChild>
         <Link href={href}>
-          <div className="flex gap-4 border-1 rounded-full pl-2.5 ">
+          <div className="flex gap-4  rounded-full pl-2.5 ">
             <div className="text-sm leading-none font-medium">{title}</div>
             <ChevronRight></ChevronRight>
           </div>

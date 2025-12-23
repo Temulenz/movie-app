@@ -86,7 +86,7 @@ export function MovieCarousel({ movies }: MovieCarouselProps) {
         </CarouselContent>
         <CarouselPrevious
           variant="default"
-          className="left-13 rounded-full bg-white"
+          className="left-13  rounded-full bg-white"
         />
         <CarouselNext
           variant={"default"}

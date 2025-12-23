@@ -14,6 +14,7 @@ export type MovieType = {
   genres: Genre[];
   key: string;
   type: string;
+  trailerKey?: string;
 };
 export type Genre = {
   name: string;
