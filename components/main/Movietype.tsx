@@ -17,13 +17,26 @@ export type MovieType = {
   trailerKey?: string;
 };
 export type Genre = {
+  id: number;
   name: string;
+};
+
+export type TrailerType = {
+  id: string;
+  key: string;
+  name: string;
+  site: "YouTube";
+  type: "Trailer" | "Teaser";
+  official: boolean;
+  published_at: string;
 };
 
 export type movieResponseType = {
   page: number;
   totalPages: number;
   results: MovieType[];
+  total_results: number;
+  total_pages: number;
 };
 export type Directorname = {
   cast: Casttype[];

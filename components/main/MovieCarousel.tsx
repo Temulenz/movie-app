@@ -13,6 +13,7 @@ import {
 import { MovieType } from "./Movietype";
 import { FaStar } from "react-icons/fa";
 import { Button } from "../ui/button";
+import { TrailerDialog } from "../home/TrailerDialog";
 
 type MovieCarouselProps = {
   movies: MovieType[];
@@ -61,9 +62,11 @@ export function MovieCarousel({ movies }: MovieCarouselProps) {
                   <p className="w-[500px] text-[12px] font-normal pt-[26px]">
                     {movie.overview}
                   </p>
-                  <Button className="bg-white text-black mt-4">
-                    Watch Trailer
-                  </Button>
+                  <TrailerDialog youtubeKey={movie.trailerKey}>
+                    <Button className="bg-white text-black mt-4">
+                      Watch Trailer
+                    </Button>
+                  </TrailerDialog>
                   <div className="flex gap-2 justify-center items-center mt-[250px] ml-130 ">
                     {Array.from({ length: count })
                       .slice(0, 5)

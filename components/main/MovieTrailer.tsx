@@ -10,8 +10,9 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { GiPlayButton } from "react-icons/gi";
+import { TrailerType } from "./Movietype";
 type Youtubeprops = {
-  Movietrailer: any;
+  Movietrailer?: TrailerType;
 
   image: string;
 };

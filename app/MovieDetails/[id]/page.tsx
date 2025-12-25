@@ -58,24 +58,38 @@ const MovieDetails = async ({ params }: MovieDetailsProps) => {
           <div>{moviedetails.vote_count}</div>
         </div>
       </div>
-      <div className="flex justify-between mt-[24px]">
-        <div className="flex justify-between w-[1080px]">
+      <div className="flex gap-8 mt-[24px]">
+        {/* POSTER */}
+        <div className="w-[290px] shrink-0">
           <img
-            className="w-[290px] h-[428px] mr-[32px]"
-            src={`https://image.tmdb.org/t/p/original/${moviedetails.poster_path}`}
+            className="w-[290px] h-[428px] rounded-xl object-cover"
+            src={`https://image.tmdb.org/t/p/w500/${moviedetails.poster_path}`}
+            alt={moviedetails.title}
+          />
+        </div>
+
+        {/* BACKDROP */}
+        <div className="relative flex-1 aspect-video rounded-xl overflow-hidden">
+          <img
+            className="w-full h-full object-cover"
+            src={`https://image.tmdb.org/t/p/original/${moviedetails.backdrop_path}`}
+            alt={moviedetails.title}
           />
 
-          <TrailerDialog youtubeKey={moviedetails.trailerKey}></TrailerDialog>
+          {/* dark overlay */}
+          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+            <TrailerDialog youtubeKey={Trailer?.key} />
+          </div>
         </div>
       </div>
       <div>
         <div className="flex gap-4 mt-[32px] mb-[20px]   ">
-          {moviedetails.genres.map((Genre: any) => (
+          {moviedetails.genres.map((genre) => (
             <div
               className="border p-0.5 border-[#E4E4E7] rounded-md"
-              key={Genre.id}
+              key={genre.id}
             >
-              {Genre.name}
+              {genre.name}
             </div>
           ))}
         </div>
@@ -120,9 +134,10 @@ const MovieDetails = async ({ params }: MovieDetailsProps) => {
       </div>
       <div className="flex justify-between mt-[36px]  ">
         <div className="text-[24px] font-bold">More like this</div>
-        <SeeMore link="see more"></SeeMore>
+
+        <SeeMore link="upcoming" />
       </div>
-      <SeeMoreCard movies={similarMovie.results} title={title} />;
+      <SeeMoreCard movies={similarMovie.results} title={title} />
     </div>
   );
 };
